@@ -8,7 +8,7 @@
          * @property donutModel
          * @type {Object}
          */
-        var donutModel = {};
+        var donutModel = [];
 
         /**
          * @method compileDirective
