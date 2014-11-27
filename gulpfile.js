@@ -27,7 +27,7 @@
             'example/vendor/d3/d3.js',
             'example/vendor/angular/angular.js',
             'example/vendor/angular-mocks/angular-mocks.js',
-            'tests/Spec.js',
+            'tests/spec.js',
             mainModule
         ];
 
