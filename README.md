@@ -14,7 +14,7 @@ ngDonut
 
 `ngDonut` is a tiny Angular and D3 component which renders a donut graph &ndash; which is capable of animation when the values change!
 
-<img width="300" height="300" src="https://dl-web.dropbox.com/get/Screenshots/Screenshot%202014-11-27%2022.43.42.png?_subject_uid=210261&w=AABxgjP0-8Sa1atGtXonqlkagjbf82XYxdyGnmQxfSDq5A" />
+<img width="300" height="300" src="http://i.imgur.com/9LVVbJC.png" />
 
 ---
 
