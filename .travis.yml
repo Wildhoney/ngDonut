@@ -15,10 +15,10 @@ script:
   - gulp build
 
 deploy:
+  provider: heroku
+  strategy: api
   all_branches: true
   skip_cleanup: true
-  strategy: api
-  provider: heroku
   api_key:
     secure: K4Nhom/16nKHa8nj6Kt6Jgnt3BhFFXGtHTt5ZHqMq9FNYj28w/Cywx15psoTMcCgvOX6US/wfOkMGEmC0i2z+VvCN1ZO38cQa/rYUp5GJtb/Uh4Lq9Vvm42cSCN7d3oTFX2Wx+vt1iV/lw3+T6rlheEKrwlujDwrNHKtLGAsc1Y=
   app: ng-donut
