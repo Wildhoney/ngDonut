@@ -13,7 +13,7 @@
          * @property donutColours
          * @type {String[]}
          */
-        $scope.donutColours = ['red', 'green', 'blue', 'yellow', 'orange'];
+        // $scope.donutColours = ['red', 'green', 'blue', 'yellow', 'orange'];
 
     });
 

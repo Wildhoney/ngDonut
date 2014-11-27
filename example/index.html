@@ -19,7 +19,14 @@
 
     <donut width="400" height="400" radius="50" colours="donutColours" ng-model="donutModel"></donut>
 
-    
+    <section class="legend">
+
+        <div class="item">
+            <label>First:</label>
+            <input type="text" ng-model="donutModel[0]" />
+        </div>
+
+    </section>
 
     <a ng-click="donutModel[0] = 100">Update Model</a>
 
