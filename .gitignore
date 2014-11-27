@@ -1,0 +1,9 @@
+# WebStorm IDE
+/.idea
+
+# npm Depencencies
+/node_modules
+
+# Bower Dependencies
+/example/vendor/*
+!/example/vendor/.gitkeep
