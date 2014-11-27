@@ -65,6 +65,12 @@
 				var colour = $d3.scale.category20();
 
 				/**
+				 * @property currentAngles
+				 * @type {Object}
+				 */
+				$scope.currentAngles = {};
+
+				/**
 				 * @method getColour
 				 * @param colourIndex {Number}
 				 * @return {String}
@@ -90,6 +96,26 @@
 					return 'translate(' + $scope.width / 2 + ',' + $scope.height / 2 + ')';
 				};
 
+				/**
+				 * @method tweenArc
+				 * @param a
+				 * @return {Function}
+				 */
+				$scope.tweenArc = function tweenArc(a) {
+
+
+
+					var arc = d3.svg.arc()
+						.innerRadius($scope.radius - 100)
+						.outerRadius($scope.radius - 20);
+
+						var i = d3.interpolate(this._current, a);
+						this._current = i(0);
+						return function(t) {
+							return arc(i(t));
+						};
+				};
+
 			}],
 
 			/**
@@ -112,7 +138,32 @@
 							  .data(pie(scope.dataset))
 							  .enter().append('path')
 							  .attr('fill', function(d, i) { return scope.getColour(i); })
-							  .attr('d', arc);
+							  .attr('d', arc)
+						      .each(function(d) { this._current = d; });
+
+				/**
+				 * @method tweenArc
+				 * @param arcModel {Object}
+				 * @return {Function}
+				 */
+				scope.tweenArc = function tweenArc(arcModel) {
+
+					var i = $d3.interpolate(this._current, arcModel);
+					this._current = i(0);
+					return function(t) {
+						return arc(i(t));
+					};
+
+				};
+
+				// Listen for any changes to the dataset...
+				scope.$watchCollection('dataset', function datasetChanged() {
+
+					path.data(pie(scope.dataset));
+					path.transition().duration(750).attrTween("d", scope.tweenArc);
+
+
+				});
 
 			}
 
