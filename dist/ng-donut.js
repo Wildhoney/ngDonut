@@ -49,7 +49,9 @@
 				height: '=',
 				width: '=',
 				radius: '=',
-				colours: '='
+				colours: '=',
+				stroke: '=',
+				strokeWidth: '='
 			},
 
 			/**
@@ -181,6 +183,14 @@
 							  .attr('fill', function(d, i) { return scope.getColour(i); })
 							  .attr('d', arc)
 						      .each(function(d) { this._current = d; });
+
+				if (scope.stroke) {
+					path.attr('stroke', scope.stroke);
+				}
+
+				if (scope.strokeWidth) {
+					path.attr('stroke-width', scope.strokeWidth)
+				}
 
 				/**
 				 * @method tweenArc

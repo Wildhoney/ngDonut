@@ -1,6 +1,6 @@
 {
   "name": "ng-donut",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Tiny Angular implementation of the D3 donut graph.",
   "main": "dist/ng-donut.min.js",
   "scripts": {

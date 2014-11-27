@@ -30,7 +30,7 @@ All that you need to do to begin is add the `donut` node to the DOM and attach y
 $scope.myDataset = [100, 200, 300, 400, 500];
 ```
 
-`ngDonut` currently supports the following attributes: `width`, `height`, `radius`, `colours`.
+`ngDonut` currently supports the following attributes: `width`, `height`, `radius`, `stroke`, `stroke-width`  and `colours`.
 
 ## Colours
 
