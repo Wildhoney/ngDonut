@@ -8,7 +8,7 @@
 	 * @return {void}
 	 */
 	var throwException = function throwException(message) {
-		throw "ngDonut: " + message;
+		throw "ngDonut: " + message + ".";
 	};
 
 	if (typeof $angular === 'undefined') {
@@ -24,7 +24,7 @@
 	 * @author Adam Timberlake
 	 * @link https://github.com/Wildhoney/ngDonut
 	 */
-	$angular.module('ngDonut', []).directive('donut', function ngDonut() {
+	$angular.module('ngDonut', []).directive('ngDonut', function ngDonut() {
 
 		return {
 
@@ -33,20 +33,6 @@
 			 * @type {String}
 			 */
 			restrict: 'EA',
-
-			/**
-			 * @property require
-			 * @type {String}
-			 */
-			require: 'ngModel',
-
-			/**
-			 * @property scope
-			 * @type {Object}
-			 */
-			scope: {
-				model: '=ngModel'
-			},
 
 			/**
 			 * @method link

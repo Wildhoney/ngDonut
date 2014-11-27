@@ -24,8 +24,9 @@
     gulp.task('karma', function gulpKarma() {
 
         var testFiles = [
-            'example/js/vendor/d3/d3.js',
-            'example/js/vendor/angular-mocks/angular-mocks.js',
+            'example/vendor/d3/d3.js',
+            'example/vendor/angular/angular.js',
+            'example/vendor/angular-mocks/angular-mocks.js',
             'tests/Spec.js',
             mainModule
         ];
