@@ -33,8 +33,8 @@
 
         it('Should be able to initialise the SVG canvas;', function() {
 
-            var scope = compileDirective().scope;
-            expect(typeof scope).toBe('object');
+            var html = compileDirective().html;
+            expect(html.find('svg')).toBeDefined();
 
         });
 
