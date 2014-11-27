@@ -6,8 +6,6 @@ ngDonut
 ![npm](http://img.shields.io/npm/v/ng-donut.svg?style=flat)
 &nbsp;
 ![License MIT](http://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat)
-&nbsp;
-![Experimental](http://img.shields.io/badge/%20!%20%20-experimental-blue.svg?style=flat)
 
 * **Heroku**: [http://ng-donut.herokuapp.com/](http://ng-donut.herokuapp.com/)
 * **Bower:** `bower install ng-donut`
