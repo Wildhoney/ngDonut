@@ -103,8 +103,6 @@
 				 */
 				$scope.clean = function clean(dataset) {
 
-					var isNumber = new RegExp('\d+');
-
 					return dataset.map(function map(value) {
 
 						if (isNaN(Number(value))) {
@@ -112,6 +110,7 @@
 						}
 
 						return Number(value);
+						
 					});
 
 				};

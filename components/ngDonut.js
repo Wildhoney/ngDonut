@@ -110,7 +110,7 @@
 						}
 
 						return Number(value);
-						
+
 					});
 
 				};

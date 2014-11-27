@@ -4,10 +4,18 @@
     $angular.module('donutApp', ['ngDonut']).controller('DonutController', function DonutController($scope) {
 
         /**
+         * @method random
+         * @return {Number}
+         */
+        var random = function random() {
+            return Math.round(Math.random() * 100);
+        };
+        
+        /**
          * @property donutModel
          * @type {Array}
          */
-        $scope.donutModel = [53245, 28479, 19697, 24037, 40245];
+        $scope.donutModel = [random(), random(), random(), random(), random()];
 
         /**
          * @property donutColours

@@ -15,20 +15,18 @@
     <script src="js/Application.js"></script>
 
 </head>
-<body ng-app="donutApp" ng-controller="DonutController">
+<body>
 
-    <donut width="400" height="400" radius="50" colours="donutColours" ng-model="donutModel"></donut>
+    <section class="container">
 
-    <section class="legend">
+        <section class="app"  ng-app="donutApp" ng-controller="DonutController">
 
-        <div class="item">
-            <label>First:</label>
-            <input type="text" ng-model="donutModel[0]" />
-        </div>
+            <donut width="400" height="400" radius="50" colours="donutColours" ng-model="donutModel"></donut>
+            <legend ng-include="'partials/legend.html'"></legend>
+
+        </section>
 
     </section>
-
-    <a ng-click="donutModel[0] = 100">Update Model</a>
 
 </body>
 </html>
