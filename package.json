@@ -1,0 +1,27 @@
+{
+  "name": "ng-donut",
+  "version": "0.1.0",
+  "description": "Tiny Angular implementation of the D3 donut graph.",
+  "main": "dist/ng-donut.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Wildhoney/ngDonut.git"
+  },
+  "keywords": [
+    "donut",
+    "graph",
+    "d3",
+    "angular",
+    "doughnut",
+    "circle"
+  ],
+  "author": "Adam Timberlake <adam.timberlake@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Wildhoney/ngDonut/issues"
+  },
+  "homepage": "https://github.com/Wildhoney/ngDonut"
+}
