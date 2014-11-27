@@ -5,9 +5,15 @@
 
         /**
          * @property donutModel
-         * @type {Object}
+         * @type {Array}
          */
-        $scope.donutModel = {};
+        $scope.donutModel = [53245, 28479, 19697, 24037, 40245];
+
+        /**
+         * @property donutColours
+         * @type {String[]}
+         */
+        $scope.donutColours = ['red', 'green', 'blue', 'yellow', 'orange'];
 
     });
 
