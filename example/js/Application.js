@@ -10,6 +10,14 @@
         var random = function random() {
             return Math.round(Math.random() * 100);
         };
+
+        /**
+         * @method modifyValues
+         * @return {void}
+         */
+        $scope.modifyValues = function modifyValues() {
+            $scope.donutModel = [random(), random(), random(), random(), random()];
+        };
         
         /**
          * @property donutModel

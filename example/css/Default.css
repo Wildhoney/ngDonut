@@ -39,7 +39,10 @@ section.container section.app section.legend {
 
 section.container section.app section.legend div.item {
     border-bottom: 1px solid rgba(0, 0, 0, .15);
-    /*padding: 20px;*/
+}
+
+section.container section.app section.legend div.item:last-of-type {
+    border-bottom: 0;
 }
 
 section.container section.app section.legend div.item label {
@@ -56,4 +59,18 @@ section.container section.app section.legend div.item input {
     padding: 20px;
     border: 0;
     outline: none;
+}
+
+section.container section.app section.legend div.item.modify-all {
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: dodgerblue;
+    transition: all .35s;
+    cursor: pointer;
+}
+
+section.container section.app section.legend div.item.modify-all:hover {
+    color: black;
 }

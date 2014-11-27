@@ -93,7 +93,31 @@
 				 * @return {String}
 				 */
 				$scope.getTranslate = function getTranslate() {
-					return 'translate(' + $scope.width / 2 + ',' + $scope.height / 2 + ')';
+					return 'translate(' + $scope.getWidth() / 2 + ',' + $scope.getHeight() / 2 + ')';
+				};
+
+				/**
+				 * @method getWidth
+				 * @return {Number}
+				 */
+				$scope.getWidth = function getWidth() {
+					return $scope.width || 400;
+				};
+
+				/**
+				 * @method getHeight
+				 * @return {Number}
+				 */
+				$scope.getHeight = function getHeight() {
+					return $scope.height || 400;
+				};
+
+				/**
+				 * @method getRadius
+				 * @return {Number}
+				 */
+				$scope.getRadius = function getRadius() {
+					return $scope.radius || (Math.min($scope.getWidth(), $scope.getHeight()) / 2);
 				};
 
 				/**
@@ -122,7 +146,7 @@
 				 */
 				$scope.tweenArc = function tweenArc(a) {
 
-					var arc = d3.svg.arc().innerRadius($scope.radius - 100).outerRadius($scope.radius - 20),
+					var arc = d3.svg.arc().innerRadius($scope.getRadius() - 100).outerRadius($scope.getRadius() - 20),
 						i   = d3.interpolate(this._current, a);
 
 					this._current = i(0);
@@ -143,12 +167,12 @@
 			 */
 			link: function link(scope, element) {
 
-				var radius = Math.min(scope.width, scope.height) / 2,
+				var radius = Math.min(scope.getWidth(), scope.getHeight()) / 2,
 					pie    = $d3.layout.pie().sort(null),
-					arc    = $d3.svg.arc().innerRadius(radius).outerRadius(radius - scope.radius),
+					arc    = $d3.svg.arc().innerRadius(radius).outerRadius(radius - scope.getRadius()),
 					svg    = $d3.select(element[0]).append('svg')
-							    .attr('width', scope.width)
-							    .attr('height', scope.height)
+							    .attr('width', scope.getWidth())
+							    .attr('height', scope.getHeight())
 						        .append('g')
 						        .attr('transform', scope.getTranslate()),
 					path = svg.selectAll('path')
