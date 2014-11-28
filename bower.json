@@ -5,7 +5,7 @@
   "authors": [
     "Adam Timberlake <adam.timberlake@gmail.com>"
   ],
-  "description": "Tiny Angular implementation of the D3 donut graph.",
+  "description": "Lightweight and extensible Angular implementation of the D3 donut graph.",
   "main": "dist/ng-donut.min.js",
   "keywords": [
     "donut",
