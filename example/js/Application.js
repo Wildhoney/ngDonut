@@ -4,6 +4,12 @@
     $angular.module('donutApp', ['ngDonut']).controller('DonutController', function DonutController($scope) {
 
         /**
+         * @property selectedModel
+         * @type {Object}
+         */
+        $scope.selectedModel = {};
+
+        /**
          * @method random
          * @return {Number}
          */
@@ -40,7 +46,7 @@
          * @return {void}
          */
         $scope.openTooltip = function openTooltip(model) {
-            console.log(model);
+            $scope.selectedModel = model;
         };
 
         /**
@@ -48,7 +54,7 @@
          * @return {void}
          */
         $scope.closeTooltip = function closeTooltip() {
-            console.log('Close!');
+            $scope.selectedModel = {};
         };
 
         /**
@@ -56,6 +62,38 @@
          * @type {String[]}
          */
         // $scope.donutColours = ['red', 'green', 'blue', 'yellow', 'orange'];
+
+    }).directive('tooltip', function tooltipDirective() {
+
+        return {
+
+            /**
+             * @property restrict
+             * @type {String}
+             */
+            restrict: 'EA',
+
+            /**
+             * @property model
+             * @type {Object}
+             */
+            scope: {
+                model: '=ngModel'
+            },
+
+            /**
+             * @property require
+             * @type {String}
+             */
+            require: 'ngModel',
+
+            /**
+             * @property template
+             * @type {String}
+             */
+            templateUrl: 'partials/tooltip.html'
+
+        };
 
     });
 

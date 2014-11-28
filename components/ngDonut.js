@@ -175,6 +175,25 @@
 				};
 
 				/**
+				 * Computes the pointer relative to the container, rather than D3's approach of being
+				 * relative to the centre point of the container.
+				 *
+				 * @method computePointer
+				 * @param context {Object}
+				 * @return {Array}
+				 */
+				$scope.computePointer = function computePointer(context) {
+
+					var mouse = $d3.mouse(context);
+
+					var x = mouse[0] + ($scope.getWidth() / 2),
+						y = mouse[1] + ($scope.getHeight() / 2);
+
+					return [x, y];
+
+				};
+
+				/**
 				 * @method listenForEvents
 				 * @param path {Object}
 				 * @return {void}
@@ -185,8 +204,12 @@
 
 						path.on('mousemove', function onMouseMove(event) {
 
+							var model     = event.data;
+							model.pointer = $scope.computePointer(this);
+
 							// Listen for the user hovering over the arcs.
 							$scope.mousemove({ model: event.data });
+							$scope.$apply();
 
 						});
 
@@ -194,10 +217,11 @@
 
 					if ($scope.mouseleave) {
 
-						path.on('mouseleave', function onMouseLeave(event) {
+						path.on('mouseleave', function onMouseLeave() {
 
 							// Listen for when the user leaves the arcs.
-							$scope.mouseleave();
+							$scope.mouseleave({ pointer: $scope.computePointer(this) });
+							$scope.$apply();
 
 						});
 

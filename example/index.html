@@ -27,7 +27,11 @@
 
             <donut stroke="'#fff'" width="300" height="300" radius="50" property="'value'" colours="donutColours"
                    mousemove="openTooltip(model)" mouseleave="closeTooltip()"
-                   ng-model="donutModel"></donut>
+                   ng-model="donutModel">
+
+                <tooltip ng-model="selectedModel"></tooltip>
+
+           </donut>
 
             <legend ng-include="'partials/legend.html'"></legend>
 

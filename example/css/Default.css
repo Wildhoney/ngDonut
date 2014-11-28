@@ -11,7 +11,25 @@ body {
 
 body, html {
     height: 100%;
-    /*background-color: rgba(0, 0, 0, .03);*/
+}
+
+donut {
+    position: relative;
+    display: inline-block;
+}
+
+div.tooltip {
+    border: 1px solid rgba(0, 0, 0, .25);
+    border-radius: 3px;
+    background-color: white;
+    font-size: 12px;
+    font-family: Arial, Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    position: absolute;
+    padding: 2px 5px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .25);
+    white-space: nowrap;
+    top: 100px;
+    pointer-events: none;
 }
 
 section.container {
