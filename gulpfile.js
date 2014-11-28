@@ -9,7 +9,8 @@
         uglify = require('gulp-uglify'),
         rename = require('gulp-rename'),
         karma  = require('gulp-karma'),
-        jshint = require('gulp-jshint');
+        jshint = require('gulp-jshint'),
+        watch  = require('gulp-watch');
 
     gulp.task('build', function gulpBuild(){
         gulp.src(mainModule)
@@ -48,5 +49,8 @@
 
     gulp.task('test', ['hint', 'karma']);
     gulp.task('default', ['hint', 'test']);
+    gulp.task('watch', ['build'], function() {
+        gulp.watch(mainModule, ['build']);
+    });
 
 })();
