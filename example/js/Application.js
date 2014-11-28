@@ -12,12 +12,27 @@
         };
 
         /**
-         * @method modifyValues
+         * @method setValues
          * @return {void}
          */
-        $scope.modifyValues = function modifyValues() {
-            $scope.donutModel = [random(), random(), random(), random(), random()];
+        $scope.setValues = function setValues() {
+
+            $scope.donutModel = [
+                { name: 'Adam', value: random() },
+                { name: 'Maria', value: random() },
+                { name: 'Jonathan', value: random() },
+                { name: 'Gabriele', value: random() },
+                { name: 'Artem', value: random() }
+            ];
+
         };
+        
+        /**
+         * @property donutModel
+         * @type {Array}
+         */
+        $scope.donutModel = [];
+        $scope.setValues();
 
         /**
          * @method openTooltip
@@ -35,19 +50,6 @@
         $scope.closeTooltip = function closeTooltip() {
             console.log('Close!');
         };
-        
-        /**
-         * @property donutModel
-         * @type {Array}
-         */
-        //$scope.donutModel = [random(), random(), random(), random(), random()];
-        $scope.donutModel = [
-            { name: 'Adam', value: random() },
-            { name: 'Maria', value: random() },
-            { name: 'Jonathan', value: random() },
-            { name: 'Gabriele', value: random() },
-            { name: 'Artem', value: random() }
-        ];
 
         /**
          * @property donutColours

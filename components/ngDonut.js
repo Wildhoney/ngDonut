@@ -259,13 +259,12 @@
 				};
 
 				// Listen for any changes to the dataset...
-				scope.$watchCollection('dataset', function datasetChanged() {
+				scope.$watch('dataset', function datasetChanged() {
 
 					path.data(pie(scope.clean(scope.dataset)));
-					path.transition().duration(750).attrTween("d", scope.tweenArc);
+					path.transition().duration(750).attrTween('d', scope.tweenArc);
 
-
-				});
+				}, true);
 
 			}
 
