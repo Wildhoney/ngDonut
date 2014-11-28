@@ -50,8 +50,11 @@
 				width: '=',
 				radius: '=',
 				colours: '=',
+				property: '=',
 				stroke: '=',
-				strokeWidth: '='
+				strokeWidth: '=',
+				mousemove: '&',
+				mouseleave: '&'
 			},
 
 			/**
@@ -131,6 +134,18 @@
 
 					return dataset.map(function map(value) {
 
+						if ($scope.property) {
+
+							if (isNaN(Number(value[$scope.property]))) {
+								value[$scope.property] = 0;
+							} else {
+								value[$scope.property] = Number(value[$scope.property]);
+							}
+
+							return value;
+
+						}
+
 						if (isNaN(Number(value))) {
 							return 0;
 						}
@@ -159,6 +174,37 @@
 
 				};
 
+				/**
+				 * @method listenForEvents
+				 * @param path {Object}
+				 * @return {void}
+				 */
+				$scope.listenForEvents = function listenForEvents(path) {
+
+					if ($scope.mousemove) {
+
+						path.on('mousemove', function onMouseMove(event) {
+
+							// Listen for the user hovering over the arcs.
+							$scope.mousemove({ model: event.data });
+
+						});
+
+					}
+
+					if ($scope.mouseleave) {
+
+						path.on('mouseleave', function onMouseLeave(event) {
+
+							// Listen for when the user leaves the arcs.
+							$scope.mouseleave();
+
+						});
+
+					}
+
+				};
+
 			}],
 
 			/**
@@ -170,7 +216,9 @@
 			link: function link(scope, element) {
 
 				var radius = Math.min(scope.getWidth(), scope.getHeight()) / 2,
-					pie    = $d3.layout.pie().sort(null),
+					pie    = $d3.layout.pie().sort(null).value(function value(model) {
+								return scope.property ? model[scope.property] : model;
+							 }),
 					arc    = $d3.svg.arc().innerRadius(radius).outerRadius(radius - scope.getRadius()),
 					svg    = $d3.select(element[0]).append('svg')
 							    .attr('width', scope.getWidth())
@@ -183,6 +231,9 @@
 							  .attr('fill', function(d, i) { return scope.getColour(i); })
 							  .attr('d', arc)
 						      .each(function(d) { this._current = d; });
+
+				// Listen for the mouse events!
+				scope.listenForEvents(path);
 
 				if (scope.stroke) {
 					path.attr('stroke', scope.stroke);

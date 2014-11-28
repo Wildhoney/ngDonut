@@ -18,12 +18,36 @@
         $scope.modifyValues = function modifyValues() {
             $scope.donutModel = [random(), random(), random(), random(), random()];
         };
+
+        /**
+         * @method openTooltip
+         * @param model {Object}
+         * @return {void}
+         */
+        $scope.openTooltip = function openTooltip(model) {
+            console.log(model);
+        };
+
+        /**
+         * @method closeTooltip
+         * @return {void}
+         */
+        $scope.closeTooltip = function closeTooltip() {
+            console.log('Close!');
+        };
         
         /**
          * @property donutModel
          * @type {Array}
          */
-        $scope.donutModel = [random(), random(), random(), random(), random()];
+        //$scope.donutModel = [random(), random(), random(), random(), random()];
+        $scope.donutModel = [
+            { name: 'Adam', value: random() },
+            { name: 'Maria', value: random() },
+            { name: 'Jonathan', value: random() },
+            { name: 'Gabriele', value: random() },
+            { name: 'Artem', value: random() }
+        ];
 
         /**
          * @property donutColours
