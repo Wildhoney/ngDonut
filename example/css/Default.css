@@ -51,13 +51,14 @@ section.container section.app section.legend div.item label {
     font-family: Arial, Tahoma, Verdana, Arial, Helvetica, sans-serif;
     font-size: 12px;
     color: rgba(0, 0, 0, .5);
-    padding: 20px;
-    width: 50px;
+    padding: 10px 10px 0 20px;
+    width: 15px;
 }
 
 section.container section.app section.legend div.item input {
-    padding: 20px;
+    padding: 10px;
     border: 0;
+    width: 40px;
     outline: none;
 }
 
