@@ -239,33 +239,43 @@
 			 */
 			link: function link(scope, element) {
 
-				var radius = Math.min(scope.getWidth(), scope.getHeight()) / 2,
+				var radius, pie, arc, svg, path;
+
+				/**
+				 * @method createDonut
+				 * @return {void}
+				 */
+				scope.createDonut = function createDonut() {
+
+					radius = Math.min(scope.getWidth(), scope.getHeight()) / 2;
 					pie    = $d3.layout.pie().sort(null).value(function value(model) {
-								return scope.property ? model[scope.property] : model;
-							 }),
-					arc    = $d3.svg.arc().innerRadius(radius).outerRadius(radius - scope.getRadius()),
+							return scope.property ? model[scope.property] : model;
+					});
+					arc    = $d3.svg.arc().innerRadius(radius).outerRadius(radius - scope.getRadius());
 					svg    = $d3.select(element[0]).append('svg')
-							    .attr('width', scope.getWidth())
-							    .attr('height', scope.getHeight())
-						        .append('g')
-						        .attr('transform', scope.getTranslate()),
+							.attr('width', scope.getWidth())
+							.attr('height', scope.getHeight())
+							.append('g')
+							.attr('transform', scope.getTranslate());
 					path = svg.selectAll('path')
-							  .data(pie(scope.clean(scope.dataset)))
-							  .enter().append('path')
-							  .attr('fill', function(d, i) { return scope.getColour(i); })
-							  .attr('d', arc)
-						      .each(function(d) { this._current = d; });
+							.data(pie(scope.clean(scope.dataset)))
+							.enter().append('path')
+							.attr('fill', function(d, i) { return scope.getColour(i); })
+							.attr('d', arc)
+							.each(function(d) { this._current = d; });
 
-				// Listen for the mouse events!
-				scope.listenForEvents(path);
+					// Listen for the mouse events!
+					scope.listenForEvents(path);
 
-				if (scope.stroke) {
-					path.attr('stroke', scope.stroke);
-				}
+					if (scope.stroke) {
+						path.attr('stroke', scope.stroke);
+					}
 
-				if (scope.strokeWidth) {
-					path.attr('stroke-width', scope.strokeWidth)
-				}
+					if (scope.strokeWidth) {
+						path.attr('stroke-width', scope.strokeWidth)
+					}
+
+				};
 
 				/**
 				 * @method tweenArc
@@ -285,6 +295,19 @@
 				// Listen for any changes to the dataset...
 				scope.$watch('dataset', function datasetChanged() {
 
+					if (scope.dataset.length === 0) {
+						return;
+					}
+
+					if (!pie) {
+
+						// Create the donut shape as we have the data.
+						scope.createDonut();
+						return;
+
+					}
+
+					// Otherwise it's an update as we have an existing donut.
 					path.data(pie(scope.clean(scope.dataset)));
 					path.transition().duration(750).attrTween('d', scope.tweenArc);
 
