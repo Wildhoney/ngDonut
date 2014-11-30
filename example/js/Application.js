@@ -1,7 +1,7 @@
 (function main($angular) {
 
     // Бог тро́ицу лю́бит...
-    $angular.module('donutApp', ['ngDonut']).controller('DonutController', function DonutController($scope) {
+    $angular.module('donutApp', ['ngDonut']).controller('DonutController', function DonutController($scope, $timeout) {
 
         /**
          * @property selectedModel
@@ -38,7 +38,13 @@
          * @type {Array}
          */
         $scope.donutModel = [];
-        $scope.setValues();
+
+        $timeout(function timeout() {
+
+            // Initialise after a second to simulate an AJAX request.
+            $scope.setValues();
+
+        }, 1000);
 
         /**
          * @method openTooltip
